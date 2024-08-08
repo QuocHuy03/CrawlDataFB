@@ -42,9 +42,7 @@ const scrapeContent = async (url) => {
     for (let video of videoElements) {
         const href = await video.getAttribute('href');
         if (href && href.startsWith('https://www.facebook.com')) {
-            // Tải video lên Cloudinary
-            const result = await cloudinary.uploader.upload(href, { resource_type: 'video' });
-            videos.push(result.secure_url);
+            videos.push(href);
         }
     }
 
